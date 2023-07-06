@@ -10,7 +10,7 @@
   }
   
   .product-item {
-    /* width: calc(100% / 6 - 20px); */
+    width: calc(100% / 5);
     width: 100%;
     box-sizing: border-box;
     padding: 16px;
@@ -83,6 +83,25 @@
       width: calc(100% / 3);
     }
   }
-    
+  @media (max-width: 1199px) {
+    .product-item {
+      /* 修正前のスタイル */
+      /* width: calc(100% / 3); */
+  
+      /* 修正後のスタイル */
+      width: calc(100% / 4);
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .product-item {
+      /* 修正前のスタイル */
+      /* width: calc(100% / 4); */
+  
+      /* 修正後のスタイル */
+      width: calc(100% / 3);
+    }
+  }
+  
   
   
