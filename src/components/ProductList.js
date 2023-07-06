@@ -23,7 +23,7 @@ const ProductList = ({ products }) => {
           className="product-item"
           onClick={() => openModal(product)}
         >
-          <div className="product-item-border">
+          <div className={`product-item-border ${isMobile ? 'mobile' : ''}`}>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
             <p>${product.price}</p>
