@@ -62,9 +62,7 @@
   }
   @media (max-width: 767px) {
     .product-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 20px;
+      width: calc(100% / 2);
     }
   }
 
