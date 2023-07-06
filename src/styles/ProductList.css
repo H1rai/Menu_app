@@ -65,7 +65,11 @@
       width: calc(100% / 2);
     }
   }
-
+  @media (min-width: 767px) {
+    .product-list {
+      width: calc(100% / 2);
+    }
+  }
   @media (max-width: 1199px) {
     .product-item {
       /* 修正前のスタイル */
