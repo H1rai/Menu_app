@@ -120,6 +120,7 @@ const products = [
       price: 24.99,
     },
   ];
-  
+  <div className={`product-list ${isMobile ? 'mobile' : ''}`}>
+
   export default products;
   
