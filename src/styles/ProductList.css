@@ -11,7 +11,6 @@
   
   .product-item {
     width: calc(100% / 5);
-    width: 100%;
     box-sizing: border-box;
     padding: 16px;
     overflow: hidden;
@@ -68,21 +67,7 @@
       grid-gap: 20px;
     }
   }
-  @media (max-width: 767px) {
-    .product-list.mobile {
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 20px;
-    }
-  }
-  @media (min-width: 768px) {
-    .product-item {
-      /* 修正前のスタイル */
-      /* width: 25%; */
-  
-      /* 修正後のスタイル */
-      width: calc(100% / 3);
-    }
-  }
+
   @media (max-width: 1199px) {
     .product-item {
       /* 修正前のスタイル */
