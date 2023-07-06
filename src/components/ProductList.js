@@ -12,8 +12,11 @@ const ProductList = ({ products }) => {
     setSelectedProduct(null);
   };
 
+  const isMobile = window.innerWidth <= 767; // ウィンドウ幅が767px以下の場合にtrueとなる変数を定義
+
+
   return (
-    <div className="product-list">
+    <div className={`product-list ${isMobile ? 'mobile' : ''}`}>
       {products.map((product) => (
         <div
           key={product.id}
