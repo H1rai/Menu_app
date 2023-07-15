@@ -1,5 +1,6 @@
-import React from 'react';
 import '../styles/ProductList.css';
+import React, { useState, useEffect } from 'react';
+
 
 const calculateColumnCount = () => {
   const screenWidth = window.innerWidth;
@@ -16,9 +17,31 @@ const calculateColumnCount = () => {
 
 const ProductList = ({ products }) => {
   const columnCount = calculateColumnCount();
+  const [minHeight, setMinHeight] = useState(0);
+
+  useEffect(() => {
+    const updateMinHeight = () => {
+      const elements = document.getElementsByClassName('product-item');
+      let minHeight = 0;
+      for (let i = 0; i < elements.length; i++) {
+        const elementHeight = elements[i].clientHeight;
+        if (elementHeight > minHeight) {
+          minHeight = elementHeight;
+        }
+      }
+      setMinHeight(minHeight);
+    };
+
+    window.addEventListener('resize', updateMinHeight);
+    updateMinHeight();
+
+    return () => {
+      window.removeEventListener('resize', updateMinHeight);
+    };
+  }, []);
 
   return (
-    <div className="product-list" style={{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}>
+    <div className="product-list" style={{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` ,gridAutoRows: `minmax(${minHeight}px, auto)`}}>
       {products.map((product) => (
         <div key={product.id} className="product-item">
           <div className="product-item-border">
