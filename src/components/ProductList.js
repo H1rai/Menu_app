@@ -10,8 +10,10 @@ const calculateColumnCount = () => {
     return 4;
   } else if (screenWidth >= 768) {
     return 3;
-  } else {
+  } else if (screenWidth >= 400) {
     return 2;
+  }else{
+    return 1;
   }
 };
 
