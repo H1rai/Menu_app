@@ -1,32 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import ProductList from './components/ProductList';
-import products from './data/products';
+import React, { useState, useRef} from 'react';
 import './App.css'; // スタイルの読み込み
+import './styles/Calendar.css'
+
+
+import Modal from './components/Modal';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import jaLocale from '@fullcalendar/core/locales/ja';
+
 
 const App = () => {
-  const [productsData, setProductsData] = useState([]);
-  const [currentMonth, setCurrentMonth] = useState('');
+
+  const calendarRef = useRef(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleDateClick = (arg) => {
+    setSelectedDate(arg.date);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
 
-
-  useEffect(() => {
-    // データの取得ロジックを追加
-    const currentDate = new Date();
-    const month = currentDate.toLocaleString('default', { month: 'long' });
-    setCurrentMonth(month);
-    setProductsData(products);
-  }, []);
-  
-  return (
-    <div className="app">
-    <div className="navigation">
-      <button className="prev-button">前へ</button>
-      <h1>{currentMonth}のメニュー</h1>
-      <button className="next-button">次へ</button>
-    </div>
-      <ProductList products={productsData} />
-    </div>
-  );
+return (
+  <div>
+    <h1>React Calendar</h1>
+    <FullCalendar
+      plugins={[dayGridPlugin]}
+      initialView="dayGridMonth"
+      dateClick={handleDateClick}
+      events={[
+        // イベントを追加する場合はここに指定
+      ]}
+      ref={calendarRef}
+      locales={[jaLocale]}
+      locale="ja"
+      classNames={{
+        calendar: 'fc',
+        button: 'fc-button',
+        dayCell: 'fc-daygrid-day',
+      }}
+    />
+    {showModal && <Modal date={selectedDate} closeModal={closeModal} />}
+  </div>
+);
 };
 
 export default App;
