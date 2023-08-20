@@ -25,3 +25,7 @@ main {
   margin-top: 2rem;
 }
 
+.fc {
+  max-width: 100%; /* カレンダーがコンテナの幅いっぱいに表示されるように設定 */
+  margin: 0 auto; /* 横方向に中央揃え */
+}
