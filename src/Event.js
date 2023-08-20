@@ -2,10 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from "@fullcalendar/interaction";
+
 import axios from 'axios';
+import CustomModal from './Modal'; 
 
 const EventCalendar = () => {
   const [events, setEvents] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+
 
   useEffect(() => {
     // APIからデータを取得する関数
@@ -29,7 +35,27 @@ const EventCalendar = () => {
     fetchData();
   }, []);
 
-  return <FullCalendar plugins={[dayGridPlugin]} initialView="dayGridMonth" events={events} />;
+
+  const handleDateClick = (arg) => {
+    const clickedDate = arg.date;
+    const dateEvents = events.filter(
+      (event) =>
+        event.start.getFullYear() === clickedDate.getFullYear() &&
+        event.start.getMonth() === clickedDate.getMonth() &&
+        event.start.getDate() === clickedDate.getDate()
+    );
+    setSelectedDate({ date: clickedDate, events: dateEvents });
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  return  <div style={{ height: '100%' }}>
+    <FullCalendar plugins={[dayGridPlugin,interactionPlugin]} initialView="dayGridMonth" events={events} dateClick={handleDateClick}/> 
+   {modalIsOpen && (<CustomModal isOpen={modalIsOpen} closeModal={closeModal} selectedDate={selectedDate} />)}
+  </div>;
 };
 
 export default EventCalendar;
