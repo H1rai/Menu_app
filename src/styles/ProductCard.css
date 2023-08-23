@@ -1,0 +1,24 @@
+.product-card {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px;
+}
+
+.image {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.info {
+  flex: 2;
+}
+
+.date {
+  text-align: right;
+}

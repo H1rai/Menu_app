@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import ProductList from './components/ProductList';
-import products from './data/products';
-import './App.css'; // スタイルの読み込み
+import React from 'react';
+import './App.css';
+import ProductCard from './components/ProductCard';
+import products from './data'; // 追加
 
-const App = () => {
-  const [productsData, setProductsData] = useState([]);
-
-  useEffect(() => {
-    // データの取得ロジックを追加
-    setProductsData(products);
-  }, []);
-
+function App() {
   return (
-    <div className="app"> {/* クラス名を追加 */}
-      <h1>Product List</h1>
-      <ProductList products={productsData} />
+    <div className="App">
+      {products.map(product => (
+        <ProductCard
+          key={product.id}
+          imageSrc={product.imageSrc}
+          title={product.title}
+          description={product.description}
+          date={product.date}
+        />
+      ))}
     </div>
   );
-};
+}
 
 export default App;
