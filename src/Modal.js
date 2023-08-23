@@ -7,6 +7,7 @@ const customStyles = {
   overlay: {
     position: 'unset', // Overlayのpositionをunsetに設定
   },
+  height:'50%'
   // 他のスタイルもここで定義可能
 };
 
