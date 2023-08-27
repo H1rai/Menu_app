@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/ProductCard.css';
 
 const ProductCard = ({ imageSrc, title, description, date }) => {
   return (

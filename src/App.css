@@ -41,7 +41,7 @@
   max-width: 960px;
   margin: 0 auto;
 }
-body {
-  background: linear-gradient(135deg, #8EDCE6, #F49AC2);
-}
 
+img{
+  width: 200px;
+}
