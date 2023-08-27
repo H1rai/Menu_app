@@ -62,7 +62,7 @@ const Modal = ({ isOpen, onClose }) => {
         sheet: 'mocha',
       };
   
-      // APIにデータを送信
+      // APIにデータを送信 
       try {
         const response = await fetch('https://menu-apps-api.vercel.app/create', {
           method: 'POST',
