@@ -65,4 +65,49 @@
     margin-top: 16px;
     float: right;
   }
+
+  @media (max-width: 600px) {
+    .modal {
+      width: 90%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: fixed;
+      z-index: 9999;
+    }
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px;
+    }
+  
+    .modal-item label {
+      font-weight: bold;
+    }
+  
+    .modal-item input[type="date"],
+    .modal-item input[type="text"],
+    .modal-item select,
+    .modal-item textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .image-preview {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    .modal-item button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
   
