@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
 import '../styles/Modal.css';
+import axios from 'axios';
+
 
 const Modal = ({ isOpen, onClose }) => {
+    const currentDate = new Date(); // 現在の日付を取得
+    const year = currentDate.getFullYear(); // 年を取得
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // 月を取得し、2桁のゼロパディング
+    const day = currentDate.getDate().toString().padStart(2, '0'); // 日を取得し、2桁のゼロパディング
+    const formattedDate = `${year}-${month}-${day}`; // フォーマットされた日付
     const [selectedImage, setSelectedImage] = useState(null);
-    const [selectedDate, setSelectedDate] = useState('');
+    const [selectedDate, setSelectedDate] = useState(formattedDate); // 今日の日付を初期値とする
+    const [selectedCategory, setSelectedCategory] = useState('主菜');
+    const [selectedTime, setSelectedTime] = useState('朝');
     const [selectedMenuName, setSelectedMenuName] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('');
-    const [selectedTime, setSelectedTime] = useState('');
     const [isFavorite, setIsFavorite] = useState(false);
     const [memo, setMemo] = useState('');
+    const [isLoading, setIsLoading] = useState(false); // ローディングステート
+    
+
   
     const handleImageUpload = (event) => {
       if (event.target.files && event.target.files[0]) {
@@ -18,7 +28,9 @@ const Modal = ({ isOpen, onClose }) => {
   
     const handleAddItem = async () => {
       let imageUrl = '';
-  
+      setIsLoading(true);
+
+      
       // 画像をアップロード
       if (selectedImage) {
         const formData = new FormData();
@@ -74,24 +86,36 @@ const Modal = ({ isOpen, onClose }) => {
   
         if (response.ok) {
           console.log('アイテムが追加されました');
+          setIsLoading(false);
+          const getDataResponse = await axios.post('https://menu-apps-api.vercel.app/get_data', {
+            sheet: 'mocha',
+          });
+          const newDataJson = getDataResponse.data.data;
+          console.log(newDataJson)
+
+
+
+
         } else {
           console.error('アイテムの追加に失敗しました');
         }
       } catch (error) {
         console.error('ネットワークエラー', error);
+      }finally{
+        handleClose();
+        // ローディング要素を非表示にする
+        setIsLoading(false);
       }
-  
-      // モーダルを閉じる
-      handleClose();
+      
+      
     };
   
     const handleClose = () => {
       setSelectedImage(null);
-      setSelectedDate('');
-      setSelectedMenuName('');
+      setSelectedDate(new Date().toLocaleDateString());
       setSelectedCategory('');
       setSelectedTime('');
-      setIsFavorite(false);
+      setIsLoading(false);
       setMemo('');
       onClose();
     };
@@ -101,8 +125,12 @@ const Modal = ({ isOpen, onClose }) => {
     }
   
     return (
+      <div>
+      {isLoading && <div className="loading">登録中です...</div>}
+
       <div className="modal-overlay">
         <div className="modal">
+
           <h2>新しいアイテムを追加</h2>
   
           <div className="modal-content">
@@ -158,6 +186,7 @@ const Modal = ({ isOpen, onClose }) => {
           <button onClick={handleClose}>閉じる</button>
           <button onClick={handleAddItem} className="add-modal-button">追加</button>
         </div>
+      </div>
       </div>
     );
   };

@@ -111,3 +111,16 @@
     }
   }
   
+  .loading {
+    position: fixed; /* 画面全体に対して固定位置に配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px; /* 上部に余白を設定 */
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    z-index: 10000; /* モーダルよりも前面に表示 */
+  }
+  

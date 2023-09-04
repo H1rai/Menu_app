@@ -7,6 +7,8 @@ import Header from './components/Header'; // 追加
 function App() {
   const [products, setProducts] = useState([]);
 
+ 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,6 +22,10 @@ function App() {
     fetchData();
   }, []);
 
+
+
+
+
   return (
     <div className="App">
       <Header />
@@ -32,6 +38,7 @@ function App() {
           date={product.date}
         />
       ))}
+      
     </div>
   );
 }
