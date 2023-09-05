@@ -3,9 +3,18 @@ import axios from 'axios';
 import './App.css';
 import ProductCard from './components/ProductCard';
 import Header from './components/Header'; // 追加
+import Modal from './components/Modal'; // Modalコンポーネントをインポート
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onUpdateData = (newData) => {
+    setProducts(newData);
+    // モーダルを閉じる
+    setIsModalOpen(false);
+  };
+
 
  
 
@@ -22,13 +31,20 @@ function App() {
     fetchData();
   }, []);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
 
 
   return (
     <div className="App">
       <Header />
+      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} onUpdateData={onUpdateData} />}
       {products.map((product, index) => (
         <ProductCard
           key={index}
@@ -38,7 +54,10 @@ function App() {
           date={product.date}
         />
       ))}
-      
+      <button className="add-button" onClick={openModal}>
+        +
+      </button>
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }
