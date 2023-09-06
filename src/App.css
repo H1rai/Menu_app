@@ -64,14 +64,13 @@ img{
 	color: #fff;
 	transition: 0.5s;
 	animation: move_d 2s infinite;
-	box-shadow: 0 5px 0 #01a754;
 }
 @keyframes move_d {
-    0% {box-shadow: 0 5px 0 #00cc66; bottom:10px;}
-    10% {box-shadow: 0 0 0 #00cc66; bottom: 15px;}
-    20% {box-shadow: 0 5px 0 #00cc66; bottom: 10px;}
-    30% {box-shadow: 0 0 0 #00cc66; bottom: 15px;}
-    40% {box-shadow: 0 5px 0 #00cc66; bottom: 10px;}
+    0% { bottom:10px;}
+    10% { bottom: 15px;}
+    20% { bottom: 10px;}
+    30% { bottom: 15px;}
+    40% { bottom: 10px;}
 }
 .add-button:hover {
 	color: #27acd9;

@@ -129,10 +129,7 @@ const Modal = ({ isOpen, onClose }) => {
       {isLoading && <div className="loading">登録中です...</div>}
 
       <div className="modal-overlay">
-        <div className="modal">
-
-          <h2>新しいアイテムを追加</h2>
-  
+        <div className="modal">  
           <div className="modal-content">
             <div className="modal-item">
               <label>日付</label>
