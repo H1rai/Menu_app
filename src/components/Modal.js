@@ -131,16 +131,15 @@ const Modal = ({ isOpen, onClose }) => {
       <div className="modal-overlay">
         <div className="modal">  
           <div className="modal-content">
+          <div className='close' onClick={handleClose}>キャンセル</div>
             <div className="modal-item">
-              <label>日付</label>
-              <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+              <input type="date" placeholder='日付を選択してね！' value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
             </div>
             <div className="modal-item">
-              <label>メニュー名</label>
-              <input type="text" value={selectedMenuName} onChange={(e) => setSelectedMenuName(e.target.value)} />
+              <input type="text" placeholder='メニュー名を入力してね！' value={selectedMenuName} onChange={(e) => setSelectedMenuName(e.target.value)} />
             </div>
             <div className="modal-item">
-              <label>種別</label>
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
               <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
                 <option>主菜</option>
                 <option>副菜</option>
@@ -148,7 +147,6 @@ const Modal = ({ isOpen, onClose }) => {
               </select>
             </div>
             <div className="modal-item">
-              <label>時刻</label>
               <select value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)}>
                 <option>朝</option>
                 <option>昼</option>
@@ -160,7 +158,6 @@ const Modal = ({ isOpen, onClose }) => {
               <input type="checkbox" checked={isFavorite} onChange={() => setIsFavorite(!isFavorite)} />
             </div>
             <div className="modal-item">
-              <label>画像アップロード</label>
               <input
                 type="file"
                 accept="image/*"
@@ -175,12 +172,11 @@ const Modal = ({ isOpen, onClose }) => {
               )}
             </div>
             <div className="modal-item">
-              <label>メモ</label>
-              <textarea value={memo} onChange={(e) => setMemo(e.target.value)} />
+              <textarea placeholder='メモがあれば入力してね！' value={memo} onChange={(e) => setMemo(e.target.value)} />
             </div>
           </div>
   
-          <button onClick={handleClose}>閉じる</button>
+          
           <button onClick={handleAddItem} className="add-modal-button">追加</button>
         </div>
       </div>

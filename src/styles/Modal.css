@@ -25,8 +25,6 @@
   }
   
   .modal-content {
-    display: grid;
-    grid-template-columns: auto auto;
     gap: 16px;
   }
   
@@ -76,7 +74,7 @@
   @media (max-width: 600px) {
     .modal {
       width: 100%; /* モバイルビューポートでは幅を90%に設定 */
-      height: 50vh; /* 画面の高さの半分に設定 */
+      height: 70vh; /* 画面の高さの半分に設定 */
       bottom: 0;
       left: 50%;
       transform: translateX(-50%); /* 水平方向に中央揃え */
@@ -87,9 +85,9 @@
     }
   
     .modal-content {
-      flex-direction: column;
-      gap: 10px;
-      padding: 20px;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 5%;
     }
   
     .modal-item label {
@@ -100,7 +98,7 @@
     .modal-item input[type="text"],
     .modal-item select,
     .modal-item textarea {
-      width: 100%;
+      width: 70%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -148,3 +146,9 @@
     }
   }
   
+.close{
+  margin-top: 3%;
+  text-align: right;
+  color: #0063ce;
+  margin-bottom: 2%;
+}
