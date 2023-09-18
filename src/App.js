@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import ProductCard from './components/ProductCard';
-import Header from './components/Header'; // 追加
 import Modal from './components/Modal'; // Modalコンポーネントをインポート
 
 function App() {
@@ -43,15 +42,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} onUpdateData={onUpdateData} />}
       {products.map((product, index) => (
         <ProductCard
+          id={`productCard_${index}`}
           key={index}
           imageSrc={product.link}
           title={product.name}
           description={product.memo}
           date={product.date}
+          time={product.time}
+          favorite={product.favorite}
         />
       ))}
       <button className="add-button" onClick={openModal}>

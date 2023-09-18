@@ -17,7 +17,6 @@
 .card__imgframe{
   width: 100%;
   height: auto;
-  padding-top: 5%;
   background-size: cover;
   box-sizing: border-box;
 }
@@ -27,6 +26,7 @@
   padding: 20px 18px;
   background: #ffffff;
   box-sizing: border-box;
+  position: relative;
 }
 .card__textbox > * + *{
   margin-top: 10px;
@@ -45,6 +45,16 @@
   margin:auto;
   margin-bottom: 2%;
 
+}
+.icon{
+  width: 10%;
+  position:absolute;
+  right: 1%;
+  top: 2%;
+}
+
+.icon :hover{
+  color:red
 }
 @media (max-width: 768px) {
   .card-skin-card {

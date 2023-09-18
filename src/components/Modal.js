@@ -139,7 +139,6 @@ const Modal = ({ isOpen, onClose }) => {
               <input type="text" placeholder='メニュー名を入力してね！' value={selectedMenuName} onChange={(e) => setSelectedMenuName(e.target.value)} />
             </div>
             <div className="modal-item">
-            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
               <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
                 <option>主菜</option>
                 <option>副菜</option>
