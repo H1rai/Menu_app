@@ -3,7 +3,7 @@ import '../styles/ProductCard.css';
 import { BsFillPencilFill } from "react-icons/bs";
 
 
-const ProductCard = ({ imageSrc, title, description, date, time, favorite }) => {
+const ProductCard = ({ imageSrc, title, description, date, time, favorite ,index}) => {
   const [isEditing, setIsEditing] = useState(false);
   const handleEditClick = () => {
     setIsEditing(true);
@@ -42,11 +42,11 @@ const ProductCard = ({ imageSrc, title, description, date, time, favorite }) => 
       </div>
       <div className="card__textbox">
         <BsFillPencilFill className='icon' onClick={handleEditClick}/>
-        <div className='card__titletext'>{title}</div>
+        <div className={`card__titletext`} id={`card__titletext${index}`}>{title}</div>
         <div className='card__overviewtext'>{description}</div>
         <div className="date">{date}</div>
         <div className='time'>{time}</div>
-        <div className='favorite'>{favorite}</div>
+        {/* <div className='favorite'>{favorite}</div> */}
       </div>
     </div>
   );

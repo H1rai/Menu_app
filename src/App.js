@@ -52,7 +52,8 @@ function App() {
           description={product.memo}
           date={product.date}
           time={product.time}
-          favorite={product.favorite}
+          // favorite={product.favorite}
+          index={index}
         />
       ))}
       <button className="add-button" onClick={openModal}>
