@@ -51,7 +51,7 @@ function App() {
           title={product.name}
           description={product.memo}
           date={product.date}
-          time={product.time}
+          // time={product.time}
           // favorite={product.favorite}
           index={index}
         />

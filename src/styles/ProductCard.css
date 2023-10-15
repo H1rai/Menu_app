@@ -51,10 +51,11 @@
   position:absolute;
   right: 1%;
   top: 2%;
+  height: 20%;
 }
 
 .icon :hover{
-  color:red
+  color:rgb(0, 161, 73)
 }
 @media (max-width: 768px) {
   .card-skin-card {
