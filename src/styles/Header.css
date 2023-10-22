@@ -5,27 +5,31 @@
   top: 0;
   left: 0;
   width: auto;
-  background-color: #535353;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(2, 2, 2);
   padding: 10px 20px;
   z-index: 1000;
-  display: none;
   justify-content: space-between;
   align-items: center;
-
+  margin-bottom: 2%;
 
   }
   
-  /* .add-button {
-    background-color: #00cc66;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    cursor: pointer;
+.month{
     position: absolute;
-    left: 93vw;
-  } */
+    top: 0px;
+    align-items: center;
+    bottom: 0;
+    margin: auto;
+    background-color: white;
+    border: none;
+}
+
+#previous{
+  left: 10%;
+}
+
+#next{
+  right:10%;
+}
   
